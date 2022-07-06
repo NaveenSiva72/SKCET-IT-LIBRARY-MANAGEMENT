@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../utils/firebase";
 import { db } from "../utils/firebase";
+
 import {
   collection,
   query,
   addDoc,
   updateDoc,
   orderBy,
+  doc,
+  deleteDoc,
   onSnapshot,
   Timestamp,
 } from "firebase/firestore";
@@ -59,6 +62,20 @@ const Forms = () => {
 
   //ends here
 
+  //deleting a task
+  /*const handleDelete = async () => {
+    const taskDocRef = doc(db, 'tasks', tasks.id)
+    try{
+      await deleteDoc(taskDocRef)
+    } catch (err) {
+      alert(err)
+    }
+  }*/
+  async function deleteDocument(id) {
+    let request = await deleteDoc(doc(db, "tasks", id));
+    console.log(request)
+}
+  //end user
 
   return (
     <div>
@@ -68,15 +85,30 @@ const Forms = () => {
         onChange={(e) => setTitle(e.target.value.toUpperCase())}
         value={title}
       ></input>
-      <button onClick={handleSubmit}>Add todo</button>
+      <button className="btn btn-primary" onClick={handleSubmit}>Add todo</button>
       <div>
         {tasks.map((task) => (
           <div>
-            {task.data.completed}
-            {task.data.title}
+            <center>
+            <table>
+              <tr>
+              <td>
+              {task.data.title}
+              </td>
+              <td>
+              {task.data.completed}
+              </td>
+              <td>
+              <button className='task__deleteButton' onClick={() => deleteDocument(task.id)}>Delete</button>
+              
+              </td>
+              </tr>
+            </table>
+            </center>
           </div>
         ))}
       </div>
+      
     </div>
   );
 };
