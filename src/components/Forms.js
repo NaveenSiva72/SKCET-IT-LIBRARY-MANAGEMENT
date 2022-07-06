@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../utils/firebase";
 import { db } from "../utils/firebase";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import {
   collection,
@@ -12,6 +13,7 @@ import {
   deleteDoc,
   onSnapshot,
   Timestamp,
+  setDoc,
 } from "firebase/firestore";
 
 const Forms = () => {
@@ -58,8 +60,14 @@ const Forms = () => {
   //ends here
 
   //updating a todo
-  
-
+  async function updateDocument(id) {
+    const itemRef = doc(db, "tasks", id);
+    let name = prompt("What would you like to update it to?");
+    setDoc(itemRef, {
+      title: name,
+      created: Timestamp.now(),
+    });
+  }
   //ends here
 
   //deleting a task
@@ -73,8 +81,8 @@ const Forms = () => {
   }*/
   async function deleteDocument(id) {
     let request = await deleteDoc(doc(db, "tasks", id));
-    console.log(request)
-}
+    console.log(request);
+  }
   //end user
 
   return (
@@ -85,10 +93,13 @@ const Forms = () => {
         onChange={(e) => setTitle(e.target.value.toUpperCase())}
         value={title}
       ></input>
-      <button className="btn btn-primary" onClick={handleSubmit}>Add todo</button>
+      <button className="btn btn-primary" onClick={handleSubmit}>
+        Add todo
+      </button>
       <div>
         {tasks.map((task) => (
           <div>
+            
             <center>
             <table>
               <tr>
@@ -100,15 +111,17 @@ const Forms = () => {
               </td>
               <td>
               <button className='task__deleteButton' onClick={() => deleteDocument(task.id)}>Delete</button>
-              
+              </td>
+              <td>
+              <button className='task__deleteButton' onClick={() => updateDocument(task.id)}>edit</button>
               </td>
               </tr>
             </table>
             </center>
+          
           </div>
         ))}
       </div>
-      
     </div>
   );
 };
