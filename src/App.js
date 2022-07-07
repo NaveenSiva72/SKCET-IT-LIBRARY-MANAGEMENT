@@ -2,12 +2,14 @@
 import './App.css';
 import React from 'react';
 import Forms from './components/Forms';
+import Topbar from './components/Topbar';
+import Sidebar from './components/Sidebar';
 function App() {
   return (
     <div className="App">
-      <h1>sdsd</h1>
-      <p>ssss</p>
-      <Forms />
+      <Topbar />
+      <Sidebar />
+      
     </div>
   );
 }
