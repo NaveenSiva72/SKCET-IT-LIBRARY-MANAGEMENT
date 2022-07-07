@@ -1,0 +1,34 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+  width: 225px;
+  height: 100vh;
+  z-index: 1038;
+}
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+transform: translateX(0);
+}
+
+.fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1030;
+}
+#layoutSidenav #layoutSidenav_nav {
+flex-basis: 225px;
+flex-shrink: 0;
+transition: transform 0.15s ease-in-out;
+z-index: 1038;
+transform: translateX(-225px);
+}
+*, *::before, *::after {
+box-sizing: border-box;
+}
+div {
+display: block;
+}
