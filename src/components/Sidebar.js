@@ -14,7 +14,7 @@ const Sidebar = () => {
             >
               <li className="nav-item">
                 <a href="#" className="navbar-brand text-light mt-5 mb-auto">
-                  <i className="fs-4  bi-house"></i>{" "}
+                  <i className="navbar-brand ps-2 "></i>{" "}
                   <span className=" d-none d-sm-inline ">Home</span>
                 </a>
               </li>
@@ -24,7 +24,7 @@ const Sidebar = () => {
                   data-bs-toggle="collapse"
                   className="navbar-brand text-light mt-5"
                 >
-                  <i className="fs-4 bi-speedometer2"></i>{" "}
+                  <i className="fs-4 "></i>{" "}
                   <span className="d-sm-inline">Dashboard</span>{" "}
                 </a>
                 <ul
