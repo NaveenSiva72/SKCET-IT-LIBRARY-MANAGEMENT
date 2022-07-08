@@ -1,14 +1,15 @@
 
 import './App.css';
 import React from 'react';
-import Forms from './components/Forms';
-import Topbar from './components/Topbar';
-import Sidebar from './components/Sidebar';
+import Mainpage from './components/Mainpage';
+import Addbook from './components/Addbook';
+
 function App() {
   return (
     <div className="App">
-      <Topbar />
-      <Sidebar />
+      <Mainpage/>
+
+    
       
     </div>
   );
