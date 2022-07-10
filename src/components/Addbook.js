@@ -1,8 +1,7 @@
 import React,{useState} from 'react';
 import Book from './Book';
 import {db} from '../utils/firebase';
-import { Timestamp } from 'firebase/firestore';
-import { addDoc,collection} from 'firebase/firestore';
+import { addDoc,collection, Timestamp} from 'firebase/firestore';
 const Addbook = (props) => {
 	const [Author, setAuthor] = useState("");
 	const [Book_id, setBook_id] = useState("");
@@ -18,14 +17,16 @@ const Addbook = (props) => {
 	  const handleSumit = async (e) => {
 		e.preventDefault();
 		await addDoc(collection(db, "Book_details"), {
-			Author:Author,
 			Book_ID:Book_id,
 			Book_name:Book_name,
+			Author:Author,
 			Category:category,
-			ISBN:ISBN,
-			Location_rack:rack,
-			No_of_copies:copies,
 			Edition:edition,
+			Location_rack:rack,
+			ISBN:ISBN,
+			No_of_copies:copies,
+			Created:Timestamp.now(),
+			
 		});
 		props.setPage(<Book />)
 	  };
