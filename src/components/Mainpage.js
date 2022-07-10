@@ -8,11 +8,19 @@ import Category from './Category';
 import Author from './Author';
 import Rack from './Rack';
 import Book from './Book';
+import {Helmet} from "react-helmet";
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
  
   return (
     <div>
+        <Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        </Helmet>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             
             <a class="navbar-brand ps-3" href="index.php">Library System</a>
