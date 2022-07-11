@@ -1,7 +1,19 @@
 import React from "react";
 
+import { db } from "../utils/firebase";
+import { deleteDoc, doc } from "firebase/firestore";
 const ReadOnlyBook = (props) => {
+ 
+  const handleDelete = async (id) => {
+    const taskDocRef = doc(db, 'Book_details', id)
+    try{
+      await deleteDoc(taskDocRef)
+    } catch (err) {
+      alert(err)
+    }
+  }
   //()=> props.setEditbook(props.book.id)
+
   return (
     <tr>
       <td>{props.book.data.Book_ID}</td>
@@ -13,15 +25,27 @@ const ReadOnlyBook = (props) => {
       <td>{props.book.data.ISBN}</td>
       <td>{props.book.data.No_of_copies}</td>
       <td>
-        {" "}
         <button
           onClick={() =>
-            props.handleEdit(props.book.id,props.book.data.Book_ID,props.book.data.Book_name,props.book.data.Author,props.book.data.Category,props.book.data.Edition,props.book.data.Location_rack,props.book.data.ISBN,props.book.data.No_of_copies)
+            props.handleEdit(
+              props.book.id,
+              props.book.data.Book_ID,
+              props.book.data.Book_name,
+              props.book.data.Author,
+              props.book.data.Category,
+              props.book.data.Edition,
+              props.book.data.Location_rack,
+              props.book.data.ISBN,
+              props.book.data.No_of_copies
+            )
           }
         >
           Edit
         </button>
+       
       </td>
+      <td>
+      <button onClick={()=>handleDelete(props.book.id)}>{props.book.id}</button>      </td>
     </tr>
   );
 };

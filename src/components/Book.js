@@ -89,6 +89,7 @@ const Book = (props) => {
               <th>ISBN</th>
               <th>no_of_copies</th>
               <th>Actions</th>
+              <th>dele</th>
             </tr>
           </thead>
           <tbody>

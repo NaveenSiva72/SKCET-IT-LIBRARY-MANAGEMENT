@@ -3,8 +3,7 @@ import { db } from "../utils/firebase";
 import { doc,updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
 import "./table.css";
-import Book from "./Book";
-import ReadOnlyBook from "./ReadOnlyBook";
+
 
 const EditableRow = (props) => {
 
@@ -97,6 +96,7 @@ const EditableRow = (props) => {
       <td>
         <button onClick={(event)=> handleUpdate(event)} >save</button>
       </td>
+      <td>cacel</td>
     </tr>
   );
 };
