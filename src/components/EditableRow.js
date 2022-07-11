@@ -1,83 +1,101 @@
 import React from "react";
-
+import { db } from "../utils/firebase";
+import { doc,updateDoc } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 import "./table.css";
+import Book from "./Book";
+import ReadOnlyBook from "./ReadOnlyBook";
 
 const EditableRow = (props) => {
-  //function when an save button clicks it will execute
 
+      //updating a todo
+      const handleUpdate = async (e) => {
+        e.preventDefault()
+        const taskDocRef = doc(db, 'Book_details', props.editBook)
+        try{
+          await updateDoc(taskDocRef, {
+            Book_ID: props.Book_id,
+            Book_name: props.Book_name,
+            Author: props.Author,
+            Category: props.category,
+            Edition: props.edition,
+            Location_rack: props.rack,
+            ISBN: props.ISBN,
+            No_of_copies: props.copies,
+            Created: Timestamp.now()
+          })
+
+        } catch (err) {
+          alert(err)
+        }
+        props.setEditbook(null);    
+      }
+     
   //ends here
 
-  /*<tr>
-    <td><input type="text" onChange={(e)=>handleOnchange(e.target.value)} value={props.book.data.Book_ID}  name /></td>
-    <td><input type="text" value={props.book.data.Book_name} placeholder="Enter an Book Name..." name /></td>
-    <td><input type="text" value={props.book.data.Author} placeholder="Enter an Author..." name /></td>
-    <td><input type="text" value={props.book.data.Category} placeholder="Enter an Category..." name /></td>
-    <td><input type="text" value={props.book.data.Edition} placeholder="Enter an Edition..." name /></td>
-    <td><input type="text" value={props.book.data.Location_rack} placeholder="Enter an location Rack..." name /></td>
-    <td><input type="text" value={props.book.data.ISBN} placeholder="Enter an ISBN..." name /></td>
-    <td><input type="text" value={props.book.data.No_of_copies} placeholder="Enter an No of copies..." name /></td>
-    <td><button >save</button></td>
-  </tr>*/
+
+
+ 
   return (
     <tr>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setBook_id(e.target.value)}
           value={props.Book_id}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setBook_name(e.target.value)}
           value={props.Book_name}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setAuthor(e.target.value)}
           value={props.Author}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setCategory(e.target.value)}
           value={props.category}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setEdition(e.target.value)}
           value={props.edition}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setRack(e.target.value)}
           value={props.rack}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setISBN(e.target.value)}
           value={props.ISBN}
         />
       </td>
       <td>
         <input
-          type="text"
+          type="text" id="text"
           onChange={(e) => props.setCopies(e.target.value)}
           value={props.copies}
         />
       </td>
       <td>
-        <button>save</button>
+        <button onClick={(event)=> handleUpdate(event)} >save</button>
       </td>
     </tr>
   );

@@ -76,6 +76,7 @@ const Book = (props) => {
         </div>
       </div>
       <div>
+        <form>
         <table>
           <thead>
             <tr>
@@ -111,6 +112,8 @@ const Book = (props) => {
                     rack={rack}
                     ISBN={ISBN}
                     copies={copies}
+                    editBook={editBook}
+                    setEditbook={setEditbook}
                   />
                 ) : (
                   <ReadOnlyBook book={book} handleEdit={handleEdit} />
@@ -119,6 +122,7 @@ const Book = (props) => {
             ))}
           </tbody>
         </table>
+        </form>
       </div>
     </div>
   );
