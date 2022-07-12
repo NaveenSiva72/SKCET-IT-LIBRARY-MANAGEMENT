@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { db } from '../utils/firebase';
 
 const Dashboard = () => {
+
+
+  
+  
   return (
     <div>
         

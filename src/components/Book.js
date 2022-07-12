@@ -22,12 +22,10 @@ const Book = (props) => {
 
   //no way ends here
 
-  const [editBook, setEditbook] = useState(null); //used to diaplay either a read only r an editable row
-  
-
+  const [editBook, setEditbook] = useState(""); //used to diaplay either a read only r an editable row
 
   //function when an edit button clicks on it will execute;
-  const handleEdit = (e,bID,banme,auth,cate,edi,loca,isbn,copi) => {
+  const handleEdit = (e, bID, banme, auth, cate, edi, loca, isbn, copi) => {
     setEditbook(e);
     setBook_id(bID);
     setBook_name(banme);
@@ -36,13 +34,10 @@ const Book = (props) => {
     setEdition(edi);
     setRack(loca);
     setISBN(isbn);
-    setCopies(copi); 
+    setCopies(copi);
   };
 
   //ends here
-
-
-  
 
   //getting list
   useEffect(() => {
@@ -77,52 +72,56 @@ const Book = (props) => {
       </div>
       <div>
         <form>
-        <table>
-          <thead>
-            <tr>
-              <th>Book_ID</th>
-              <th>Book_Name</th>
-              <th>Author</th>
-              <th>Category</th>
-              <th>Edition</th>
-              <th>Location rack</th>
-              <th>ISBN</th>
-              <th>no_of_copies</th>
-              <th>Actions</th>
-              <th>dele</th>
-            </tr>
-          </thead>
-          <tbody>
-            {book_item.map((book) => (
-              <Fragment>
-                {editBook === book.id ? (
-                  <EditableRow
-                    setBook_id={setBook_id}
-                    setBook_name={setBook_name}
-                    setAuthor={setAuthor}
-                    setCategory={setCategory}
-                    setEdition={setEdition}
-                    setRack={setRack}
-                    setISBN={setISBN}
-                    setCopies={setCopies}
-                    Book_id={Book_id}
-                    Book_name={Book_name}
-                    Author={Author}
-                    category={category}
-                    edition={edition}
-                    rack={rack}
-                    ISBN={ISBN}
-                    copies={copies}
-                    editBook={editBook}
-                    setEditbook={setEditbook}
-                  />
-                ) : (
-                  <ReadOnlyBook book={book} handleEdit={handleEdit} />
-                )}
-              </Fragment>
-            ))}
-          </tbody>
-        </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Book_ID</th>
+                <th>Book_Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Edition</th>
+                <th>Location rack</th>
+                <th>ISBN</th>
+                <th>no_of_copies</th>
+                <th>Actions</th>
+                <th>dele</th>
+              </tr>
+            </thead>
+            <tbody>
+              {book_item.map((book) => (
+                <Fragment>
+                  {editBook === book.id ? (
+                    <EditableRow
+                      setBook_id={setBook_id}
+                      setBook_name={setBook_name}
+                      setAuthor={setAuthor}
+                      setCategory={setCategory}
+                      setEdition={setEdition}
+                      setRack={setRack}
+                      setISBN={setISBN}
+                      setCopies={setCopies}
+                      Book_id={Book_id}
+                      Book_name={Book_name}
+                      Author={Author}
+                      category={category}
+                      edition={edition}
+                      rack={rack}
+                      ISBN={ISBN}
+                      copies={copies}
+                      editBook={editBook}
+                      setEditbook={setEditbook}
+                    />
+                  ) : (
+                    <ReadOnlyBook
+                      book={book}
+                      handleEdit={handleEdit}
+                      
+                    />
+                  )}
+                </Fragment>
+              ))}
+            </tbody>
+          </table>
         </form>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React from "react";
 
+
 import { db } from "../utils/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import Book from "./Book";
 const ReadOnlyBook = (props) => {
  
   const handleDelete = async (id) => {
@@ -11,7 +13,15 @@ const ReadOnlyBook = (props) => {
     } catch (err) {
       alert(err)
     }
-  }
+    renderBook();
+  };
+  const renderBook=()=>
+  {
+    <Book />
+  };
+  
+    
+  
   //()=> props.setEditbook(props.book.id)
 
   return (
@@ -44,7 +54,7 @@ const ReadOnlyBook = (props) => {
         </button>
        
       </td>
-      <td>
+      <td>  
       <button onClick={()=>handleDelete(props.book.id)}>{props.book.id}</button>      </td>
     </tr>
   );
