@@ -27,7 +27,7 @@ const EditableRow = (props) => {
         } catch (err) {
           alert(err)
         }
-        props.setEditbook(null);    
+        props.setEditbook("");    
       }
      
   //ends here

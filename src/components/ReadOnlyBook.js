@@ -6,6 +6,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import Book from "./Book";
 const ReadOnlyBook = (props) => {
  
+  //delete
   const handleDelete = async (id) => {
     const taskDocRef = doc(db, 'Book_details', id)
     try{
@@ -17,7 +18,6 @@ const ReadOnlyBook = (props) => {
   };
   const renderBook=()=>
   {
-    <Book />
   };
   
     

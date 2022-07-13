@@ -8,12 +8,7 @@ import Forms from './components/Forms';
 function App() {
   return (
     <div className="App">
-      <Mainpage/>
-      <Forms />
-
-
-    
-      
+      <Mainpage/>  
     </div>
   );
 }

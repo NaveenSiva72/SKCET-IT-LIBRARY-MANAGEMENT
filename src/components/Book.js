@@ -91,7 +91,7 @@ const Book = (props) => {
               {book_item.map((book) => (
                 <Fragment>
                   {editBook === book.id ? (
-                    <EditableRow
+                    <EditableRow key={book}
                       setBook_id={setBook_id}
                       setBook_name={setBook_name}
                       setAuthor={setAuthor}
@@ -112,7 +112,7 @@ const Book = (props) => {
                       setEditbook={setEditbook}
                     />
                   ) : (
-                    <ReadOnlyBook
+                    <ReadOnlyBook key={book}
                       book={book}
                       handleEdit={handleEdit}
                       
