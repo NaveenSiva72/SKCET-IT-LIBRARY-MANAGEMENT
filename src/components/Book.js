@@ -71,7 +71,7 @@ const Book = (props) => {
         </div>
       </div>
       <div>
-        <form>
+       
           <table>
             <thead>
               <tr>
@@ -122,7 +122,7 @@ const Book = (props) => {
               ))}
             </tbody>
           </table>
-        </form>
+       
       </div>
     </div>
   );

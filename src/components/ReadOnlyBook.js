@@ -55,7 +55,7 @@ const ReadOnlyBook = (props) => {
        
       </td>
       <td>  
-      <button onClick={()=>handleDelete(props.book.id)}>{props.book.id}</button>      </td>
+      <button onClick={()=>handleDelete(props.book.id)}>delete</button>      </td>
     </tr>
   );
 };
