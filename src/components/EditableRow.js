@@ -96,7 +96,9 @@ const EditableRow = (props) => {
       <td>
         <button onClick={(event)=> handleUpdate(event)} >save</button>
       </td>
-      <td>cacel</td>
+      <td>
+        <button onClick={()=> props.setEditbook("")} >Calcel</button>
+      </td>
     </tr>
   );
 };

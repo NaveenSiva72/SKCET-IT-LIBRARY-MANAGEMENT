@@ -23,7 +23,7 @@ const Dashboard = () => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-primary text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">345</h1>
+					<h1 class="text-center">0</h1>
 					<h5 class="text-center">Total Book Issue</h5>
 				</div>
 			</div>
@@ -31,7 +31,7 @@ const Dashboard = () => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-warning text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">69</h1>
+					<h1 class="text-center">0</h1>
 					<h5 class="text-center">Total Book Returned</h5>
 				</div>
 			</div>
@@ -63,7 +63,7 @@ const Dashboard = () => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-danger text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">18</h1>
+					<h1 class="text-center">0</h1>
 					<h5 class="text-center">Total Author</h5>
 				</div>
 			</div>
@@ -71,7 +71,7 @@ const Dashboard = () => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-warning text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">4</h1>
+					<h1 class="text-center">0</h1>
 					<h5 class="text-center">Total Category</h5>
 				</div>
 			</div>
@@ -79,7 +79,7 @@ const Dashboard = () => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-primary text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">11</h1>
+					<h1 class="text-center">0</h1>
 					<h5 class="text-center">Total Location Rack</h5>
 				</div>
 			</div>

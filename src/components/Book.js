@@ -10,6 +10,8 @@ import EditableRow from "./EditableRow";
 const Book = (props) => {
   const [book_item, setbook_item] = useState([]);
 
+  const [searchValue,setsearchValue]=useState("");
+
   //no way da
   const [Author, setAuthor] = useState("");
   const [Book_id, setBook_id] = useState("");
@@ -53,6 +55,42 @@ const Book = (props) => {
   }, []);
   //ends here
 
+
+  const searchBook=(e)=>{
+    
+    /*const collectionref=collection(db , "Book_details");
+    const q = query(collectionref , orderBy("Created","desc"));      //
+    onSnapshot(q,(snapshot)=>
+    setbook_item(snapshot.docs.map(doc=>({...doc.data(),id:doc.id,key:doc.id})))
+    );*/
+    //if(e == book_item.map((d) => {d.data.Book_name} ))
+    //{
+      //console.log(e);
+    //}
+
+
+
+      
+     
+
+  }
+
+  const search = [];
+  book_item.map((d) => search.push(d.data.Book_name));
+  console.log(search)
+
+
+  
+  for(let i=0;i<search.length;i++)
+  {
+    if(search[i].slice(0,searchValue.length) ==searchValue)
+    {
+     console.log(search[i] + " suxxess");
+     
+    }
+  }
+
+
   return (
     <div>
       <h1>Book Management</h1>
@@ -69,9 +107,10 @@ const Book = (props) => {
             <div class="col col-md-6">Book Management</div>
           </div>
         </div>
+        <div class="dataTable-search"><input onChange={(e)=>setsearchValue(e.target.value)} class="dataTable-input" placeholder="Search..." type="text"/></div>
       </div>
-      <div>
-       
+      
+       <div>
           <table>
             <thead>
               <tr>

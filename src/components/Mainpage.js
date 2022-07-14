@@ -51,7 +51,7 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage} />)}>Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook setPage={setPage} />)}>Add Book</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook />)}>Issue Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issue Book</a>
                                 <a class="nav-link" href="logout.php">Logout</a>
     
                             </div>
