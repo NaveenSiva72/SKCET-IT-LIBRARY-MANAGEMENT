@@ -14,12 +14,8 @@ const ReadOnlyBook = (props) => {
     } catch (err) {
       alert(err)
     }
-    renderBook();
   };
-  const renderBook=()=>
-  {
-  };
-  
+ 
     
   
   //()=> props.setEditbook(props.book.id)

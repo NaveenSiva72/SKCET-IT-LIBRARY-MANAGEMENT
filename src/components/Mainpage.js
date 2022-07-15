@@ -6,14 +6,28 @@ import IssueBook from './IssueBook';
 import Addbook from './Addbook';
 import Category from './Category';
 import Author from './Author';
-import Rack from './Rack';
+import Rack from './Rack';  
 import Book from './Book';
 import {Helmet} from "react-helmet";
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
+
+    //state to set an sidebar r not
+    const[visiblesidebar,setvisiblesidebar]=useState("sb-nav-fixed")
+    let count=0
+    const handlevisiblesidebar=()=>{
+        if(count%2==0)
+        {
+            setvisiblesidebar("sb-nav-fixed sb-sidenav-toggled");
+            count++;
+            return;
+        }
+        setvisiblesidebar("sb-nav-fixed");
+        console.log(visiblesidebar);
+    }
  
   return (
-    <div>
+    <div class={visiblesidebar}>
         <Helmet>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -23,9 +37,8 @@ const Mainpage = () => {
         </Helmet>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             
-            <a class="navbar-brand ps-3" href="index.php">Library System</a>
-            
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></button>
+            <a class="navbar-brand ps-3" href="#!">Library System</a>
+            <button  onClick={()=>handlevisiblesidebar()} class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><i class="fas fa-bars"></i></button>
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 
             </form>

@@ -8,14 +8,8 @@ import "./table.css";
 const Author = () => {
   const [disAuthor, setDisAuthor] = useState([]);
 
-  //const authorList=[...authorList , {disAuthor}];
-
-  /*if(Object.values(answer).includes("c")){
- console.log("true");
-}*/
-
+  
   //getting list
-  //console.log(disAuthor);
   useEffect(() => {
     const q = query(collection(db, "Book_details"));
     onSnapshot(q, (querySnapshot) => {
@@ -28,53 +22,22 @@ const Author = () => {
   }, []);
   //ends here
 
-  /* for(let i=0;i<disAuthor.length;i++)
-    {
-      //let result=true;
-      /*for(let j=0;j<uniqueNames.length;j++)
-      {
-          if(disAuthor[i] == uniqueNames[j])
-          {
-          //console.log(uniqueNames.length);
-
-            result=false;
-            break;
-          }
-      }
-      //console.log(result);
-      if(result)
-      {
-        uniqueNames.push(disAuthor[i]);
-       // console.log(uniqueNames[i]);
-      }*/
-  /*if((uniqueNames).includes(Object.values(disAuthor[i])) == false){
-        uniqueNames.push(Object.values(disAuthor[i]));
-        console.log("true");
-       }
-       console.log(Object.values(disAuthor[i])); 
-       console.log(uniqueNames);
-
-    }
   
-
-  
-
- /* const uniqueNames = disAuthor.filter((val, id, array) => {
-    console.log(id);
-    console.log(val);
-    return array.indexOf(val) != disAuthor.data;  
- });*/
-  //console.log(uniqueNames);
   const myArray = [];
   disAuthor.map((d) => myArray.push(d.data));
   console.log(myArray);
 
   const uniqueNames = [...new Set(myArray)];
 
-  // console.log(disAuthor);
+ 
 
   return (
     <div>
+      <h1  class="text-muted">Available Author</h1>
+      <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
+		<li class="breadcrumb-item"><a href="Dashboard">Dashboard</a></li>
+		<li class="breadcrumb-item active">Author Management</li>
+	</ol>
       <table>
         <thead>
           <th>Authors</th>
