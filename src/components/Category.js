@@ -3,6 +3,7 @@ import { db } from "../utils/firebase";
 
 import { query, collection, onSnapshot } from "firebase/firestore";
 import "./table.css";
+import Dashboard from "./Dashboard";
 
 
 const Author = () => {
@@ -28,6 +29,9 @@ const Author = () => {
   console.log(myArray);
 
   const uniqueNames = [...new Set(myArray)];
+  let categoryLength=uniqueNames.length;
+  <Dashboard categoryLength={categoryLength}/>
+  console.log(categoryLength);
 
  
 

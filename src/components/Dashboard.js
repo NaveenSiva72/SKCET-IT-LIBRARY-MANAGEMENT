@@ -4,7 +4,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { QuerySnapshot ,query,onSnapshot,collection} from "@firebase/firestore";
 import firebase from "firebase/compat/app";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
   const [TotalBook, setTotalBook] = useState(0);
 
@@ -15,6 +15,7 @@ const Dashboard = () => {
       setTotalBook(TotalBook)
     });
   }, []);
+  console.log(props.categoryLength);
 
   return <div>
     <div class="container-fluid py-4">

@@ -11,9 +11,9 @@ const IssueBook_details = (props) => {
   const [department, setDepartment] = useState("");
   const [status, setStatus] = useState("not returned");
 
-  //addingn list to tyhe firebase
-  const handleIssue = async (e) => {
-    e.preventDefault();
+  //addingn list to the firebase
+  const handleIssue = async () => {
+   
     await addDoc(collection(db, "Book"), {
       Book_name: Book_name,
       Book_ID: Book_id,
@@ -23,16 +23,8 @@ const IssueBook_details = (props) => {
       status: status,
       Issue_date: Timestamp.now(),
     });
-    props.setPage(
+    props.setpage(
       <IssueBook
-        Book_name={Book_name}
-        Book_id={Book_id}
-        roll_no={roll_no}
-        stuname={stuname}
-        department={department}
-        status={status}
-        
-
       />
     );
   };
@@ -126,7 +118,7 @@ const IssueBook_details = (props) => {
                 name="add_book"
                 class="btn btn-success"
                 value="Add"
-                onClick={handleIssue}
+                onClick={()=>handleIssue()}
               >
                 Issue
               </button>

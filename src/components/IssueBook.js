@@ -1,12 +1,34 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard";
 import IssueBook_details from "./IssueBook_details";
+import { db } from "../utils/firebase";
+import { query, collection, orderBy, onSnapshot } from "firebase/firestore";
 
 const IssueBook = (props) => {
+
+    const [issue_details,setissue_details]=useState();
+
+
   const handleAdd = () => {
     props.setPage(<IssueBook_details setPage={props.setPage} />);
   };
+
+  //getting list
+  useEffect(() => {
+    const q = query(collection(db, "Book"), orderBy("Created", "desc"));
+    onSnapshot(q, (querySnapshot) => {
+      setissue_details(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+  //ends here
+
+
   return (
     <div>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
@@ -27,6 +49,9 @@ const IssueBook = (props) => {
           </div>
         </div>
       </div>
+      <table>
+
+      </table>
     </div>
   );
 };

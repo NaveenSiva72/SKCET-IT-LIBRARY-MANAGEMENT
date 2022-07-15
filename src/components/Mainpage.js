@@ -9,36 +9,43 @@ import Author from './Author';
 import Rack from './Rack';  
 import Book from './Book';
 import {Helmet} from "react-helmet";
+import navlogo from './lines.png';
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
 
     //state to set an sidebar r not
     const[visiblesidebar,setvisiblesidebar]=useState("sb-nav-fixed")
-    let count=0
+    let count=true
     const handlevisiblesidebar=()=>{
-        if(count%2==0)
+        if(count)
         {
             setvisiblesidebar("sb-nav-fixed sb-sidenav-toggled");
-            count++;
-            return;
+            count=false;
+            
         }
-        setvisiblesidebar("sb-nav-fixed");
-        console.log(visiblesidebar);
+        else{
+            setvisiblesidebar("sb-nav-fixed");
+            count=true;
+        }
+        
     }
  
   return (
     <div class={visiblesidebar}>
+        
         <Helmet>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content=""/>
         <meta name="author" content=""/>
         <meta name="generator" content=""/>
+        
         </Helmet>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            
-            <a class="navbar-brand ps-3" href="#!">Library System</a>
-            <button  onClick={()=>handlevisiblesidebar()} class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><i class="fas fa-bars"></i></button>
+        
+            <a onClick={()=>setPage(<Dashboard/>)} class="navbar-brand ps-3" href="#!">Library System</a>
+            <img  onClick={()=>handlevisiblesidebar()} src={navlogo}  alt="image"/>
+
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 
             </form>
@@ -85,7 +92,7 @@ const Mainpage = () => {
                     <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid px-4">
                             <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright © Library Management System 2022</div>
+                                <div class="text-muted">Copyright © SKCET</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     

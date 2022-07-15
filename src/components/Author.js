@@ -1,51 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../utils/firebase";
-
-import { query, collection, onSnapshot } from "firebase/firestore";
+import {
+  query,
+  collection,
+  orderBy,
+  onSnapshot,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import "./table.css";
 
-
-const Author = () => {
-  const [disAuthor, setDisAuthor] = useState([]);
-
-  
-  //getting list
+const Rack = () => {
+  const [book_item, setbook_item] = useState([]);
   useEffect(() => {
-    const q = query(collection(db, "Book_details"));
+    const q = query(collection(db, "Book_details"), orderBy("Created", "desc"));
     onSnapshot(q, (querySnapshot) => {
-      setDisAuthor(
+      setbook_item(
         querySnapshot.docs.map((doc) => ({
-          data: doc.data().Author,
+          id: doc.id,
+          data: doc.data(),
         }))
       );
     });
   }, []);
-  //ends here
-
-  
-  const myArray = [];
-  disAuthor.map((d) => myArray.push(d.data));
-  console.log(myArray);
-
-  const uniqueNames = [...new Set(myArray)];
-
- 
 
   return (
     <div>
-      <h1  class="text-muted">Available Author</h1>
+      <h1>Author </h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
-		<li class="breadcrumb-item"><a href="Dashboard">Dashboard</a></li>
-		<li class="breadcrumb-item active">Author Management</li>
-	</ol>
+        <li class="breadcrumb-item">
+          <a href="index.php">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Author  Management</li>
+      </ol>
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col col-md-6">Author </div>
+          </div>
+        </div>
+      </div>
       <table>
         <thead>
-          <th>Authors</th>
+          <tr>
+            <th>Book Name</th>
+            <th>Author  Name</th>
+          </tr>
         </thead>
         <tbody>
-          {uniqueNames.map((auth) => (
+          {book_item.map((books) => (
             <tr>
-              <td>{auth}</td>
+              <td>{books.data.Book_name}</td>
+              <td>{books.data.Author}</td>
             </tr>
           ))}
         </tbody>
@@ -54,4 +60,4 @@ const Author = () => {
   );
 };
 
-export default Author;
+export default Rack;
