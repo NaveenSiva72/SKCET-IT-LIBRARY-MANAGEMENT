@@ -17,7 +17,7 @@ const IssueBook = (props) => {
   const [issue_details, setissue_details] = useState([]);
 
   //state for to set color for a book
-  const [color,setColor]=useState("btn btn-warning")
+  const [color, setColor] = useState("btn btn-warning");
 
   //getting list
   useEffect(() => {
@@ -37,24 +37,48 @@ const IssueBook = (props) => {
   //ends here
 
   //updating a list
-  async function updatestatus(id, bid, bname,issdate,redate,srollno,sname,dept) {
-    
+  async function updatestatus(
+    id,
+    bid,
+    bname,
+    issdate,
+    redate,
+    srollno,
+    sname,
+    dept
+  ) {
+    //fine calculcation
+    let fineupdate = Math.abs(issdate - redate) / (1000 * 60 * 60 * 24);
+    let fine = 0;
+
+    if (fineupdate <= 10) {
+      fine = 0;
+      console.log(30);
+    } else if (fineupdate > 10 && fineupdate <= 20) {
+      fine = 30;
+      console.log(30);
+    } else {
+      fine = prompt("Enter fine amout:");
+    }
+    //fine calculcation
+
     const itemRef = doc(db, "Issued_Books", id);
-    setColor("btn btn-success")
+    setColor("btn btn-success");
     setDoc(itemRef, {
       Book_ID: bid,
       Book_name: bname,
-      Issue_date:issdate,
-      Return_date:Timestamp.now().toDate().toDateString(),
-      roll_no:srollno,
-      stuname:sname,
-      department:dept,
+      Issue_date: issdate,
+      Return_date: redate,
+      roll_no: srollno,
+      stuname: sname,
+      department: dept,
       status: "returned",
+      fineAmount: fine,
     });
   }
   //ends here
 
-  console.log(issue_details);
+  //console.log(issue_details);
   return (
     <div>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
@@ -82,6 +106,7 @@ const IssueBook = (props) => {
               <th>BOOK NAME</th>
               <th>ISSUE DATE</th>
               <th>RETURN DATE</th>
+              <th>Fine amount</th>
               <th>STUDENT ID</th>
               <th>STUDENT NAME</th>
               <th>DEPARTMENT</th>
@@ -95,19 +120,20 @@ const IssueBook = (props) => {
                 <td>{issues.data.Book_name}</td>
                 <td>{issues.data.Issue_date}</td>
                 <td>{issues.data.Return_date}</td>
+                <td>{issues.data.fineAmount}</td>
                 <td>{issues.data.roll_no}</td>
                 <td>{issues.data.stuname}</td>
                 <td>{issues.data.department}</td>
                 <td>
                   <button
-                  class={color}
+                    class={color}
                     onClick={() =>
                       updatestatus(
                         issues.id,
                         issues.data.Book_ID,
                         issues.data.Book_name,
                         issues.data.Issue_date,
-                        issues.data.Return_date,
+                        Timestamp.now().toDate().toDateString(),
                         issues.data.roll_no,
                         issues.data.stuname,
                         issues.data.department

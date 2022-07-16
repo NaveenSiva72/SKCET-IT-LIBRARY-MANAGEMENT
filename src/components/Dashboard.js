@@ -8,10 +8,15 @@ import { set } from "firebase/database";
 const Dashboard = (props) => {
 
   const [TotalBook, setTotalBook] = useState(0);
+  const [TotalIssuebook, setTotalIssuebook] = useState(0);
 
   const [Authorlist,setAuthorlist]=useState([]);
   const [locationlist,setlocationlist]=useState([]);
+  const [returnedbooklist,setreturnedbooklist]=useState([]);
 
+
+
+//getting list from book_details collection
   useEffect(() => {
     const q = query(collection(db, "Book_details"));
     onSnapshot(q, (querySnapshot) => {
@@ -33,6 +38,28 @@ const Dashboard = (props) => {
 
     });
   }, []);
+//getting list from book_details collection edns here
+
+
+
+//getting list from Issue booik  collection
+useEffect(() => {
+    const q = query(collection(db, "Issued_Books"));
+    onSnapshot(q, (querySnapshot) => {
+		const  TotalIssuebook= querySnapshot.size
+		setTotalIssuebook(TotalIssuebook)
+      setreturnedbooklist(
+        querySnapshot.docs.map((doc) => ({
+          rdata: doc.data().status,
+        }))
+      );
+    });
+  }, []);
+//getting list from Issue booik  collection ends here
+
+
+
+
  
   //for author count
   const Authorlist2 = [];
@@ -45,7 +72,24 @@ const Dashboard = (props) => {
    locationlist.map((d) => locationlist2.push(d.ldata));
    const uniquerack=[...new Set(locationlist2)];
    //author count ends here
-  
+
+
+  //count for returned book and not returned book list
+   let returned=0;
+   let notreturned=0;
+   const returnedbooklist2=[];
+   returnedbooklist.map((d)=> returnedbooklist2.push(d.rdata));
+   for(let i=0;i<returnedbooklist.length;i++)
+   {
+		if(returnedbooklist2[i] === "returned")
+		{
+			returned++;
+		}
+		else{
+			notreturned++;
+		}
+   }
+  //count for returned book and not returned book list
 
 
 
@@ -59,7 +103,7 @@ const Dashboard = (props) => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-primary text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">0</h1>
+					<h1 class="text-center">{TotalIssuebook}</h1>
 					<h5 class="text-center">Total Book Issue</h5>
 				</div>
 			</div>
@@ -67,7 +111,7 @@ const Dashboard = (props) => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-warning text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">0</h1>
+					<h1 class="text-center">{returned}</h1>
 					<h5 class="text-center">Total Book Returned</h5>
 				</div>
 			</div>
@@ -75,7 +119,7 @@ const Dashboard = (props) => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-danger text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center">0</h1>
+					<h1 class="text-center">{notreturned}</h1>
 					<h5 class="text-center">Total Book Not Return</h5>
 				</div>
 			</div>

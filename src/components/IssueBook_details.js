@@ -25,6 +25,7 @@ const IssueBook_details = (props) => {
       status: status,
       Issue_date: Timestamp.now().toDate().toDateString(),
       Return_date:"",
+      fineAmount:0,
     });
     props.setPage(
       <IssueBook
