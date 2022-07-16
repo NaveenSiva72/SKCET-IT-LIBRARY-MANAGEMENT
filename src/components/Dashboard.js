@@ -13,6 +13,7 @@ const Dashboard = (props) => {
   const [Authorlist,setAuthorlist]=useState([]);
   const [locationlist,setlocationlist]=useState([]);
   const [returnedbooklist,setreturnedbooklist]=useState([]);
+  const [totalfine,settotalfine] = useState(0);
 
 
 
@@ -46,13 +47,28 @@ const Dashboard = (props) => {
 useEffect(() => {
     const q = query(collection(db, "Issued_Books"));
     onSnapshot(q, (querySnapshot) => {
+
+		//getting size of 
 		const  TotalIssuebook= querySnapshot.size
 		setTotalIssuebook(TotalIssuebook)
+
+		//getting data as return and notreturn 
       setreturnedbooklist(
         querySnapshot.docs.map((doc) => ({
           rdata: doc.data().status,
         }))
       );
+
+	  //getting fine amount from the firebase
+	  settotalfine(
+		querySnapshot.docs.map((doc) => ({
+			fdata : doc.data().fineAmount,
+		}))
+	  )
+
+
+
+
     });
   }, []);
 //getting list from Issue booik  collection ends here
@@ -92,6 +108,20 @@ useEffect(() => {
   //count for returned book and not returned book list
 
 
+  //finding total fine details
+  let total=0; 
+  for(let i=0;i<totalfine.length;i++)
+  {
+	total=total + parseInt(totalfine[i].fdata);
+	
+  }
+  console.log(total);
+
+
+
+  //finding total fine details ends here
+
+
 
 
 
@@ -127,7 +157,7 @@ useEffect(() => {
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-success text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center"><span >₹</span>&nbsp;0</h1>
+					<h1 class="text-center"><span >₹ {total}</span></h1>
 					<h5 class="text-center">Total Fines Received</h5>
 				</div>
 			</div>

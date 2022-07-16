@@ -32,6 +32,7 @@ const ReadOnlyBook = (props) => {
       <td>{props.book.data.No_of_copies}</td>
       <td>
         <button
+        class="btn btn-secondary  btn-sm"
           onClick={() =>
             props.handleEdit(
               props.book.id,
@@ -51,7 +52,7 @@ const ReadOnlyBook = (props) => {
        
       </td>
       <td>  
-      <button onClick={()=>handleDelete(props.book.id)}>delete</button>      </td>
+      <button onClick={()=>handleDelete(props.book.id)} class="btn btn-secondary  btn-sm" >delete</button>      </td>
     </tr>
   );
 };

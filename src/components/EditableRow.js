@@ -3,6 +3,7 @@ import { db } from "../utils/firebase";
 import { doc,updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
 import "./table.css";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const EditableRow = (props) => {
@@ -94,10 +95,10 @@ const EditableRow = (props) => {
         />
       </td>
       <td>
-        <button onClick={(event)=> handleUpdate(event)} >save</button>
+        <button onClick={(event)=> handleUpdate(event)} class="btn btn-secondary  btn-sm"  >save</button>
       </td>
       <td>
-        <button onClick={()=> props.setEditbook("")} >Calcel</button>
+        <button onClick={()=> props.setEditbook("")}class="btn btn-secondary  btn-sm" >Calcel</button>
       </td>
     </tr>
   );
