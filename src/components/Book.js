@@ -55,26 +55,6 @@ const Book = (props) => {
   }, []);
   //ends here
 
-
-  const searchBook=(e)=>{
-    
-    /*const collectionref=collection(db , "Book_details");
-    const q = query(collectionref , orderBy("Created","desc"));      //
-    onSnapshot(q,(snapshot)=>
-    setbook_item(snapshot.docs.map(doc=>({...doc.data(),id:doc.id,key:doc.id})))
-    );*/
-    //if(e == book_item.map((d) => {d.data.Book_name} ))
-    //{
-      //console.log(e);
-    //}
-
-
-
-      
-     
-
-  }
-
   const search = [];
   book_item.map((d) => search.push(d.data.Book_name));
   console.log(search)

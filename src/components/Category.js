@@ -30,8 +30,10 @@ const Author = () => {
 
   const uniqueNames = [...new Set(myArray)];
   let categoryLength=uniqueNames.length;
-  <Dashboard categoryLength={categoryLength}/>
-  console.log(categoryLength);
+
+  const[catlength,setcatlength]=useState(categoryLength);
+  <Dashboard catlength={catlength}/>
+  console.log(catlength);
 
  
 

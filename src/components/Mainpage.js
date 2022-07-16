@@ -10,6 +10,7 @@ import Rack from './Rack';
 import Book from './Book';
 import {Helmet} from "react-helmet";
 import navlogo from './lines.png';
+import IssueBook_details from './IssueBook_details';
 const Mainpage = () => {
     const [page,setPage] = useState(<Dashboard />)
 
@@ -71,7 +72,9 @@ const Mainpage = () => {
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage} />)}>Book</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Addbook setPage={setPage} />)}>Add Book</a>
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issue Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook setPage={setPage} />)}>Issued Book</a>
+                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<IssueBook_details setPage={setPage} />)}>Issue book </a>
+
                                 <a class="nav-link" href="logout.php">Logout</a>
     
                             </div>
