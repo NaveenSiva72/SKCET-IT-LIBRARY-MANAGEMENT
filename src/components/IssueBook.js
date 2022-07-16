@@ -74,6 +74,8 @@ const IssueBook = (props) => {
       department: dept,
       status: "returned",
       fineAmount: fine,
+      status: "returned",
+      BtColor : "btn btn-success",
     });
   }
   //ends here
@@ -126,7 +128,7 @@ const IssueBook = (props) => {
                 <td>{issues.data.department}</td>
                 <td>
                   <button
-                    class={color}
+                    class={issues.data.BtColor}
                     onClick={() =>
                       updatestatus(
                         issues.id,
