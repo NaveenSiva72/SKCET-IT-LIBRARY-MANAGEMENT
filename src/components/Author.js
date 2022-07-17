@@ -24,6 +24,29 @@ const Rack = () => {
     });
   }, []);
 
+//Search Starts
+const [searchField, setSearchField] = useState("");
+
+let filteredBooks = [];
+  const book_item1 =[];
+  book_item.map((d)=> book_item1.push(d.data));
+   filteredBooks = book_item1.filter(
+    Sbook => {
+      return (
+        Sbook.Author.toLowerCase().includes(searchField.toLowerCase()) ||
+        Sbook.Book_name.toLowerCase().includes(searchField.toLowerCase())
+
+      );
+    }
+  );
+
+const handleChange = e => {
+
+  setSearchField(e.target.value);
+  
+};
+//search ends
+
   return (
     <div>
       <h1>Author </h1>
@@ -39,12 +62,14 @@ const Rack = () => {
             <div class="col col-md-6">Author </div>
           </div>
         </div>
+        <div class="dataTable-search"><input onChange={handleChange} class="dataTable-input" placeholder="Search..." type="text"/></div>
       </div>
+      {searchField  === "" ? (
       <table>
         <thead>
           <tr>
             <th>Book Name</th>
-            <th>Author  Name</th>
+            <th>Author Name </th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +81,27 @@ const Rack = () => {
           ))}
         </tbody>
       </table>
+      ) : (
+        <table>
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Author Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        {filteredBooks.map((filtered)=>(
+            <tr>
+              <td>{filtered.Book_name}</td>
+              <td>{filtered.Author}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      )
+      
+      }
     </div>
   );
 };

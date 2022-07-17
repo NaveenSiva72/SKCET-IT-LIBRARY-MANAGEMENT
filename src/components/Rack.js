@@ -24,6 +24,28 @@ const Rack = () => {
     });
   }, []);
 
+//Search Starts
+const [searchField, setSearchField] = useState("");
+
+let filteredBooks = [];
+  const book_item1 =[];
+  book_item.map((d)=> book_item1.push(d.data));
+   filteredBooks = book_item1.filter(
+    Sbook => {
+      return (
+        Sbook.Location_rack.toLowerCase().includes(searchField.toLowerCase()) ||
+        Sbook.Book_name.toLowerCase().includes(searchField.toLowerCase())
+
+      );
+    }
+  );
+
+const handleChange = e => {
+
+  setSearchField(e.target.value);
+  
+};
+//search ends
   return (
     <div>
       <h1>Location Rack</h1>
@@ -39,7 +61,9 @@ const Rack = () => {
             <div class="col col-md-6">Location Rack</div>
           </div>
         </div>
+        <div class="dataTable-search"><input onChange={handleChange} class="dataTable-input" placeholder="Search..." type="text"/></div>
       </div>
+      {searchField  === "" ? (
       <table>
         <thead>
           <tr>
@@ -56,6 +80,28 @@ const Rack = () => {
           ))}
         </tbody>
       </table>
+      ) : (
+        <table>
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Location rack</th>
+          </tr>
+        </thead>
+        <tbody>
+        {filteredBooks.map((filtered)=>(
+            <tr>
+              <td>{filtered.Book_name}</td>
+              <td>{filtered.Location_rack}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      )
+      
+      }
+      
     </div>
   );
 };

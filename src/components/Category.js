@@ -39,21 +39,36 @@ const Author = () => {
 
   return (
     <div>
-      <h1  class="text-muted">Available Category</h1>
+      <h1>CATEGORY</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
-		<li class="breadcrumb-item"><a href="Dashboard">Dashboard</a></li>
-		<li class="breadcrumb-item active">Author Management</li>
-	</ol>
+        <li class="breadcrumb-item">
+          <a href="index.php">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">CATEGORY</li>
+      </ol>
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col col-md-6">AVAILABLE CATEGORIES</div>
+          </div>
+        </div>
+      </div>
       <table>
         <thead>
-          <th>Category</th>
+          <th></th>
+          <th><center>CATEGORY</center></th>
+          <th></th>
         </thead>
         <tbody>
+          
           {uniqueNames.map((auth) => (
             <tr>
-              <td >{auth}</td>
+              <td></td>
+              <td ><center>{auth}</center></td>
+              <td>     </td>
             </tr>
           ))}
+          
         </tbody>
       </table>
     </div>

@@ -83,24 +83,21 @@ const IssueBook = (props) => {
   //console.log(issue_details);
   return (
     <div>
+      <h1>ISSUE BOOK MANAGEMENT</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">
-          <a
-            href="dashboard"
-            onClick={() => {
-              <Dashboard />;
-            }}
-          >
-            Dashboard
-          </a>
+          <a href="index.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Issue Book Management</li>
+        <li class="breadcrumb-item active">ISSUED BOOKS</li>
       </ol>
-      <div class="card-header">
-        <div class="row">
-          <div class="col col-md-6">Issue Book Management</div>
-          <div class="col col-md-6" align="right"></div>
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col col-md-6">ISSUED BOOKS</div>
+          </div>
         </div>
+      </div>
+
         <table>
           <thead>
             <tr>
@@ -150,7 +147,7 @@ const IssueBook = (props) => {
           </tbody>
         </table>
       </div>
-    </div>
+    
   );
 };
 
