@@ -26,6 +26,11 @@ const Book = (props) => {
 
   const [editBook, setEditbook] = useState(""); //used to diaplay either a read only r an editable row
 
+
+  //used for search
+  const[currentid,setcurrentid]=useState("");
+  const[fidbid,setfidbid]=useState([]); 
+
   //function when an edit button clicks on it will execute;
   const handleEdit = (e, bID, banme, auth, cate, edi, loca, isbn, copi) => {
     setEditbook(e);
@@ -51,9 +56,19 @@ const Book = (props) => {
           data: doc.data(),
         }))
       );
+
+      setfidbid(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data().Book_ID,
+        }))
+      );
+
     });
   }, []);
   //ends here
+
+  console.log(fidbid);
 
 
 //Searching stars...
@@ -71,11 +86,32 @@ const [searchField, setSearchField] = useState("");
   );
 
   const handleChange = e => {
-    console.log(e.target.value);
+
     setSearchField(e.target.value);
     
   };
-  console.log(searchField);
+
+
+
+
+
+
+  const help=(bid)=>{
+
+    for(let i=0;i<fidbid.length;i++)
+    {
+      //console.log(fidbid[i].data)
+      if(fidbid[i].data === bid)
+      {
+        return setcurrentid(fidbid[i].id);
+      }
+      
+    }
+
+    
+  }
+  console.log(currentid);
+ 
 
 
 
@@ -178,7 +214,7 @@ const [searchField, setSearchField] = useState("");
               <td>{filtered.ISBN}</td>
               <td>{filtered.No_of_copies}</td>
               <td>
-                <button>Edit</button>
+                <button onClick={()=>help(filtered.Book_ID)} >Edit</button>
               </td>
               <td>  
               <button>delete</button></td>
