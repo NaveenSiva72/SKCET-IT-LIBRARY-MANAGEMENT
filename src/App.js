@@ -1,15 +1,19 @@
-
 import './App.css';
-import React from 'react';
+import React , {useState,useEffect} from 'react';
 import Mainpage from './components/Mainpage';
-import Addbook from './components/Addbook';
-import Forms from './components/Forms';
+import Login from './components/Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <Mainpage/>  
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/Dashboard" element={<Mainpage />}  />
+          <Route path="/" element={<Login />} /> 
+        </Routes> 
+    </BrowserRouter>
   );
 }
 

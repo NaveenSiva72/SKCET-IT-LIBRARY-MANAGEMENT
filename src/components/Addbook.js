@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import Book from "./Book";
 import { db } from "../utils/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react';
 const Addbook = (props) => {
   const [Author, setAuthor] = useState("");
   const [Book_id, setBook_id] = useState("");
@@ -13,9 +19,41 @@ const Addbook = (props) => {
   const [edition, setEdition] = useState("");
   //onClick={()=>props.setPage(<Book />)}>
 
+  const [alertmessage,setalertmessage]=useState("")
+
   //addingn list to tyhe firebase
   const handleSumit = async (e) => {
     e.preventDefault();
+    if(Book_name === "")
+    {
+      alert("**book name can't be empty**");
+      return false;
+    }
+    else if(Author === "")
+    {
+      alert("**Author name can't be empty**");
+      return false;
+    }
+    else if(category === "")
+    {
+      alert("**Category can't be empty**");
+      return false;
+    }
+    else if(rack === "")
+    {
+      alert("**Rack name can't be empty**");
+      return false;
+    }
+    if(copies === 0)
+    {
+      alert("**No of copies must be greter then or equal to 1**");
+      return false;
+    }
+    if(Book_id === "" && /^\d+$/.test(Book_id))
+    {
+      alert("**Book IDcan't be empty**");
+      return false;
+    }
     await addDoc(collection(db, "Book_details"), {
       Book_ID: Book_id,
       Book_name: Book_name,
