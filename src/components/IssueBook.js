@@ -23,7 +23,7 @@ const IssueBook = (props) => {
   useEffect(() => {
     const q = query(
       collection(db, "Issued_Books"),
-      orderBy("Issue_date", "desc")
+      orderBy("OrderedBYdate", "desc")
     );
     onSnapshot(q, (querySnapshot) => {
       setissue_details(
@@ -48,11 +48,8 @@ const IssueBook = (props) => {
     dept
   ) {
     //fine calculcation
-    let fineupdate = Math.abs(issdate - redate) / (1000 * 60 * 60 * 24);
-    let fine = 0;
-
     
-    fine = prompt("Enter fine amout:");
+    const fine = prompt("Enter fine amout:");
     
     //fine calculcation
 
@@ -70,6 +67,7 @@ const IssueBook = (props) => {
       fineAmount: fine,
       status: "returned",
       BtColor : "btn btn-success",
+      OrderedBYdate:Timestamp.now(),
     });
   }
   //ends here

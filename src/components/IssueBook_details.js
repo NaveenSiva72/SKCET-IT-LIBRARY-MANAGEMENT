@@ -54,6 +54,7 @@ const IssueBook_details = (props) => {
       Return_date:"",
       fineAmount:0,
       BtColor : "btn btn-warning",
+      OrderedBYdate:Timestamp.now(),
     });
     props.setPage(
       <IssueBook
