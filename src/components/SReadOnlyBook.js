@@ -12,7 +12,7 @@ const SReadOnlyBook = (props) => {
       <td>{props.filtered.ISBN}</td>
       <td>{props.filtered.No_of_copies}</td>
       <td>
-        <button
+        <button class="btn btn-secondary  btn-sm"
           onClick={() =>
             props.help(
               props.filtered.Book_ID,
@@ -30,7 +30,7 @@ const SReadOnlyBook = (props) => {
         </button>
       </td>
       <td>
-        <button onClick={()=>props.help1(props.filtered.Book_ID)} >delete</button>
+        <button onClick={()=>props.help1(props.filtered.Book_ID)} class="btn btn-secondary  btn-sm" >delete</button>
       </td>
     </tr>
   );

@@ -15,6 +15,33 @@ const IssueBook_details = (props) => {
 
   //addingn list to the firebase
   const handleIssue = async () => {
+
+    if(Book_name === "")
+    {
+      alert("**Book name can't be empty**");
+      return false;
+    }
+    else if(Book_id === "")
+    {
+      alert("**Book id  can't be empty**");
+      return false;
+    }
+    else if(roll_no === "")
+    {
+      alert("**Roll No can't be empty**");
+      return false;
+    }
+    else if(stuname === "")
+    {
+      alert("**Student name can't be empty**");
+      return false;
+    }
+    else if(department === 0)
+    {
+      alert("**Department can't be empty**");
+      return false;
+    }
+    
    
     await addDoc(collection(db, "Issued_Books"), {
       Book_name: Book_name,
@@ -38,7 +65,7 @@ const IssueBook_details = (props) => {
   //ends here
   return (
     <div>
-      <h1>Book Details and Student Details</h1>
+      <h1 style={{color:"black"}}>Book Details and Student Details</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">
           <a href="index">Dashboard</a>
@@ -60,7 +87,6 @@ const IssueBook_details = (props) => {
                     type="text"
                     onChange={(e) => setBook_name(e.target.value)}
                     //value={Book_name}
-                    placeholder="Enter book name..."
                     name="book_name"
                     id="book_name"
                     class="form-control"
@@ -74,7 +100,6 @@ const IssueBook_details = (props) => {
                     type="text"
                     onChange={(e) => setBook_id(e.target.value)}
                     //value={Author}
-                    placeholder="Enter book ID..."
                     class="form-control"
                   ></input>
                 </div>
@@ -88,7 +113,6 @@ const IssueBook_details = (props) => {
                     type="text"
                     onChange={(e) => setRoll_no(e.target.value)}
                     //value={category}
-                    placeholder="Enter Studenty ROll.NO..."
                     class="form-control"
                   ></input>
                 </div>
@@ -100,7 +124,6 @@ const IssueBook_details = (props) => {
                     type="text"
                     onChange={(e) => setStuname(e.target.value)}
                     //value={rack}
-                    placeholder="Enter Student name..."
                     class="form-control"
                   ></input>
                 </div>

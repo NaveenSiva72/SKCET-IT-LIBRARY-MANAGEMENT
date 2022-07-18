@@ -44,12 +44,12 @@ const Addbook = (props) => {
       alert("**Rack name can't be empty**");
       return false;
     }
-    if(copies === 0)
+    else if(copies === 0)
     {
       alert("**No of copies must be greter then or equal to 1**");
       return false;
     }
-    if(Book_id === "" && /^\d+$/.test(Book_id))
+    else if(Book_id === "")
     {
       alert("**Book IDcan't be empty**");
       return false;
@@ -90,7 +90,7 @@ const Addbook = (props) => {
 
   return (
     <div>
-      <h1>Book Management</h1>
+      <h1 style={{color:"black"}} >Book Management</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">
           <a>Dashboard</a>

@@ -135,7 +135,7 @@ const Book = (props) => {
 
   return (
     <div>
-      <h1>Book Management</h1>
+      <h1 style={{color:"black" }} >Book Management</h1>
 
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">

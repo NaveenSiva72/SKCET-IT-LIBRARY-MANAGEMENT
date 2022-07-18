@@ -51,15 +51,9 @@ const IssueBook = (props) => {
     let fineupdate = Math.abs(issdate - redate) / (1000 * 60 * 60 * 24);
     let fine = 0;
 
-    if (fineupdate <= 10) {
-      fine = 0;
-      console.log(30);
-    } else if (fineupdate > 10 && fineupdate <= 20) {
-      fine = 30;
-      console.log(30);
-    } else {
-      fine = prompt("Enter fine amout:");
-    }
+    
+    fine = prompt("Enter fine amout:");
+    
     //fine calculcation
 
     const itemRef = doc(db, "Issued_Books", id);
@@ -83,7 +77,7 @@ const IssueBook = (props) => {
   //console.log(issue_details);
   return (
     <div>
-      <h1>ISSUE BOOK MANAGEMENT</h1>
+      <h1 style={{color:"black"}}>ISSUE BOOK MANAGEMENT</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">
           <a href="index.php">Dashboard</a>

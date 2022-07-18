@@ -2,6 +2,7 @@ import React ,{useState} from 'react';
 import { auth } from '../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {useNavigate} from 'react-router-dom';
+  import './stylelog.css';
 const Login = () => {
 
     const navigate =useNavigate();
@@ -13,18 +14,48 @@ const Login = () => {
             console.log("owuesgheoiuawgebholgawsjnpbh;kj");
             signInWithEmailAndPassword(auth , email , password)
             .then(auth => navigate("/Dashboard"))
+            setEmail("")
+            setPassword("")
             .catch(error=>console.error(error))
         }
 
   return (
    
-    <div>
-        <label>User name</label>
-        <input type="text" onChange={(e) =>setEmail(e.target.value) }/>
-        <label>Password</label><br/>
-        <input type="password" onChange={(e) =>setPassword(e.target.value) }/><br/>
-        <button onClick={()=>signIn()} >Sign in</button>
-    </div>
+      <center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      <div class="main">
+      <div class="container a-container" id="a-container">
+        <div class="form" id="a-form" >
+          <h2 class="form_title title">SIGN IN</h2>
+          <input class="form__input"  placeholder='Email' onChange={(e) =>setEmail(e.target.value) }/>
+          <input class="form__input" placeholder='Password' type="password" onChange={(e) =>setPassword(e.target.value) }/>
+          <button class="form__button button" submit onClick={()=>signIn()} >SIGN IN</button>
+        </div>
+      </div>
+      <div class="container b-container" id="b-container">
+        <div class="form" id="b-form" >
+          <h2 class="form_title title">Sign in to Website</h2>
+
+ 
+          <button class="form__button button submit">SIGN IN</button>
+        </div>
+      </div>
+      <div class="switch" id="switch-cnt">
+        <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+          <h2 class="switch__title title">SKCET IT LIBRARY</h2>
+          <p class="switch__description description">For student portal ,please login with your personal info</p>
+          <button class="switch__button button switch-btn">SIGN IN</button>
+        </div>
+      </div>
+    </div>  
+    </center>
+    
   
   )
 }

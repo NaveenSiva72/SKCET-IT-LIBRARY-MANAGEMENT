@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
 import Forms from './Forms'
-import './stylesmain.css' 
+import './stylesmain.css' ;
 import Dashboard from './Dashboard';
 import IssueBook from './IssueBook';
 import Addbook from './Addbook';
@@ -68,7 +68,6 @@ const Mainpage = () => {
                     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                         <div class="sb-sidenav-menu">
                             <div class="nav">
-                                <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Category />)}>Category</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Author />)}>Author</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Rack />)}>Location Rack</a>
                                 <a class="nav-link" style={{cursor:'pointer'}} onClick={() =>setPage(<Book setPage={setPage} />)}>Book</a>

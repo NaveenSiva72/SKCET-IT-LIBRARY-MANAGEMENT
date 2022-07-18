@@ -48,7 +48,7 @@ const handleChange = e => {
 //search ends
   return (
     <div>
-      <h1>Location Rack</h1>
+      <h1 style={{color:"black" , fontfamily: 'Montserrat ,sans-serif'}}>Location Rack</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">
           <a href="index.php">Dashboard</a>
