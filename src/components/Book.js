@@ -8,6 +8,8 @@ import ReadOnlyBook from "./ReadOnlyBook";
 import EditableRow from "./EditableRow";
 import SReadOnlyBook from "./SReadOnlyBook";
 import SEditableRow from "./SEditableRow";
+import {Helmet} from "react-helmet";
+
 
 const Book = (props) => {
   const [book_item, setbook_item] = useState([]);
@@ -135,6 +137,15 @@ const Book = (props) => {
 
   return (
     <div>
+
+<Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        
+        </Helmet>
       <h1 style={{color:"black" }} >Book Management</h1>
 
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">

@@ -42,7 +42,7 @@ const IssueBook_details = (props) => {
       return false;
     }
     
-   
+
     await addDoc(collection(db, "Issued_Books"), {
       Book_name: Book_name,
       Book_ID: Book_id,
@@ -147,7 +147,7 @@ const IssueBook_details = (props) => {
             <div class="mt-4 mb-3 text-center">
               <button
                 name="add_book"
-                class="btn btn-warning"
+                class="btn btn-success"
                
                 onClick={()=>handleIssue()}
               >

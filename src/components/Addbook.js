@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import Book from "./Book";
 import { db } from "../utils/firebase";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from '@chakra-ui/react';
+import {Helmet} from "react-helmet";
+
+
 const Addbook = (props) => {
   const [Author, setAuthor] = useState("");
   const [Book_id, setBook_id] = useState("");
@@ -19,11 +16,16 @@ const Addbook = (props) => {
   const [edition, setEdition] = useState("");
   //onClick={()=>props.setPage(<Book />)}>
 
-  const [alertmessage,setalertmessage]=useState("")
+  const [alertmessage,setalertmessage]=useState("");
+
+  const onlyNumbers=(str)=> {
+    return /^[0-9.,]+$/.test(str);
+  }
 
   //addingn list to tyhe firebase
   const handleSumit = async (e) => {
     e.preventDefault();
+
     if(Book_name === "")
     {
       alert("**book name can't be empty**");
@@ -51,7 +53,12 @@ const Addbook = (props) => {
     }
     else if(Book_id === "")
     {
-      alert("**Book IDcan't be empty**");
+      alert("**Book ID can't be empty**");
+      return false;
+    }
+    else if(!(onlyNumbers(Book_id)))
+    {
+      alert("**Book ID it must only contain NUMERIC**");
       return false;
     }
     await addDoc(collection(db, "Book_details"), {
@@ -90,6 +97,14 @@ const Addbook = (props) => {
 
   return (
     <div>
+      <Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        
+        </Helmet>
       <h1 style={{color:"black"}} >Book Management</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">

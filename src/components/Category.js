@@ -4,6 +4,7 @@ import { db } from "../utils/firebase";
 import { query, collection, onSnapshot } from "firebase/firestore";
 import "./table.css";
 import Dashboard from "./Dashboard";
+import {Helmet} from "react-helmet";
 
 
 const Author = () => {
@@ -39,6 +40,13 @@ const Author = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        </Helmet>
       <h1>CATEGORY</h1>
       <ol class="breadcrumb mt-4 mb-4 bg-light p-2 border">
         <li class="breadcrumb-item">

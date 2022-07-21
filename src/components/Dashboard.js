@@ -4,6 +4,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { QuerySnapshot ,query,onSnapshot,collection} from "@firebase/firestore";
 import firebase from "firebase/compat/app";
 import { set } from "firebase/database";
+import {Helmet} from "react-helmet";
 
 const Dashboard = (props) => {
 
@@ -143,20 +144,28 @@ useEffect(() => {
 
 
 
-  return <div>
+  return (<div>
+	<Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        
+        </Helmet>
     <div class="container-fluid py-4">
 	<h1 class="mb-5" style={{color:"black"}}>Dashboard</h1>
 	<div class="row">
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-primary text-white mb-4">
-				<div class="card-body">
+			<div style={{backgroundColor :"#395B64"}} class="card text-white mb-4">
+				<div  class="card-body">
 					<h1 class="text-center">{TotalIssuebook}</h1>
 					<h5 class="text-center">Total Book Issue</h5>
 				</div>
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-warning text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{returned}</h1>
 					<h5 class="text-center">Total Book Returned</h5>
@@ -164,7 +173,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-danger text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{notreturned}</h1>
 					<h5 class="text-center">Total Book Not Return</h5>
@@ -172,7 +181,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-success text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center"><span >₹ {total}</span></h1>
 					<h5 class="text-center">Total Fines Received</h5>
@@ -180,7 +189,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-success text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{TotalBook}</h1>
 					<h5 class="text-center">Total Book</h5>
@@ -188,7 +197,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-danger text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{uniqueAuthor.length}</h1>
 					<h5 class="text-center">Total unique Author</h5>
@@ -196,7 +205,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-warning text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{uniqueCategory.length}</h1>
 					<h5 class="text-center">Total Category</h5>
@@ -204,7 +213,7 @@ useEffect(() => {
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
-			<div class="card bg-primary text-white mb-4">
+			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
 					<h1 class="text-center">{uniquerack.length}</h1>
 					<h5 class="text-center">Total Location Rack</h5>
@@ -213,7 +222,7 @@ useEffect(() => {
 		</div>
 	</div>
 </div>
-  </div>;
+  </div>);
 };
 
 export default Dashboard;

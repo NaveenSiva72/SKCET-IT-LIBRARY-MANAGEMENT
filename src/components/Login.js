@@ -2,7 +2,9 @@ import React ,{useState} from 'react';
 import { auth } from '../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {useNavigate} from 'react-router-dom';
-  import './stylelog.css';
+import './stylelog.css';
+import {Helmet} from "react-helmet";
+
 const Login = () => {
 
     const navigate =useNavigate();
@@ -16,12 +18,19 @@ const Login = () => {
             .then(auth => navigate("/Dashboard"))
             setEmail("")
             setPassword("")
-            .catch(error=>console.error(error))
+            .catch(error=>alert(error))
         }
 
   return (
    
       <center>
+         <Helmet>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <meta name="generator" content=""/>
+        </Helmet>
         <br />
         <br />
         <br />
