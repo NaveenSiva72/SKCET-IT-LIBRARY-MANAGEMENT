@@ -17,8 +17,11 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_measurementId
      };
 const app = initializeApp(firebaseConfig);
+
+//used to get the sign in functionalities from the firebase
 const auth =getAuth(app)
 
+//Used to get the firebasse firestore DB contents
 const db = getFirestore(app)
 export {auth,db} ;
  

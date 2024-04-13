@@ -16,7 +16,7 @@ const Dashboard = (props) => {
   const [returnedbooklist,setreturnedbooklist]=useState([]);
   const [totalfine,settotalfine] = useState(0);
   const [totalCategory,settotalCategory] = useState([]);
-
+  const [totalFineAmountCalaulated , setTotalFineAmountCalaulated] = useState(0);
 
 
 
@@ -76,9 +76,16 @@ useEffect(() => {
 			fdata : doc.data().fineAmount,
 		}))
 	  )
-
-
-
+	  let currentTotal=0;
+	  for(let i=0;i<totalfine.length;i++)
+	  {
+		if(totalfine[i]?.fdata==undefined)
+		{
+			continue;
+		}
+		currentTotal=currentTotal + parseInt(totalfine[i]?.fdata);
+	  }
+	  setTotalFineAmountCalaulated(currentTotal)
 
     });
   }, []);
@@ -129,12 +136,8 @@ useEffect(() => {
 
 
   //finding total fine details
-  let total=0; 
-  for(let i=0;i<totalfine.length;i++)
-  {
-	total=total + parseInt(totalfine[i].fdata);
-	
-  }
+
+ 
   //finding total fine details ends here
 
 
@@ -183,7 +186,7 @@ useEffect(() => {
 		<div class="col-xl-3 col-md-6">
 			<div style={{backgroundColor :"#395B64"}} class="card  text-white mb-4">
 				<div class="card-body">
-					<h1 class="text-center"><span >₹ {total}</span></h1>
+					<h1 class="text-center"><span >₹ {totalFineAmountCalaulated}</span></h1>
 					<h5 class="text-center">Total Fines Received</h5>
 				</div>
 			</div>
