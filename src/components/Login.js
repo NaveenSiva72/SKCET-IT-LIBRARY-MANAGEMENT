@@ -9,18 +9,28 @@ const Login = () => {
 
     const navigate =useNavigate();
 
-        const [email,setEmail]=useState("");
-        const [password,setPassword]=useState("");
+        const [email,setEmail]=useState({email:"",errorStyle:""});
+        const [password,setPassword]=useState({password:"",errorStyle:""});
 
         const signIn =()=>{
-            console.log("owuesgheoiuawgebholgawsjnpbh;kj");
+          if(email.email==="")
+          {
+             setEmail({email:"",errorStyle:"1px solid red"});
+            
+          }
+          else if(password.password==="")
+          {
+            setPassword({password:"",errorStyle:"1px solid red"});
+          }
+          else{
             signInWithEmailAndPassword(auth , email , password)
             .then(auth => navigate("/Dashboard"))
             setEmail("")
             setPassword("")
             .catch(error=>alert(error))
+          }
         }
-
+      
   return (
    
       <center>
@@ -39,9 +49,9 @@ const Login = () => {
       <div class="main">
       <div class="container a-container" id="a-container">
         <div class="form" id="a-form" >
-          <h2 class="form_title title">SIGN IN</h2>
-          <input class="form__input"  placeholder='Email' onChange={(e) =>setEmail(e.target.value) }/>
-          <input class="form__input" placeholder='Password' type="password" onChange={(e) =>setPassword(e.target.value) }/>
+          <h2 class="form_title title" >SIGN IN</h2>
+          <input class="form__input" required style={{border:email["errorStyle"]}}  placeholder={email.errorStyle==="" ? 'Enter Email' : 'Please fill the details ⚠️'} type="email" onChange={(e) =>setEmail({email:e.target.value,errorStyle:""}) }/>
+          <input class="form__input" style={{border:password["errorStyle"]}} placeholder={password.errorStyle==="" ? 'Enter password' : 'Please fill the details ⚠️'} onChange={(e) =>setPassword({password:e.target.value,errorStyle:""}) }/>
           <button class="form__button button" submit onClick={()=>signIn()} >SIGN IN</button>
         </div>
       </div>
@@ -59,7 +69,7 @@ const Login = () => {
         <div class="switch__container" id="switch-c1">
           <h2 class="switch__title title">SKCET IT LIBRARY</h2>
           <p class="switch__description description">For student portal ,please login with your personal info</p>
-          <button class="switch__button button switch-btn">SIGN IN</button>
+          <button class="switch__button button switch-btn" onClick={()=>navigate("/SignUP")}>SIGN UP</button>
         </div>
       </div>
     </div>  
@@ -69,4 +79,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
