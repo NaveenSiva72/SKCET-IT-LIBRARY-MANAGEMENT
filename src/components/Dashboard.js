@@ -76,19 +76,18 @@ useEffect(() => {
 			fdata : doc.data().fineAmount,
 		}))
 	  )
-	  let currentTotal=0;
+    });
+  }, []);
+
+  useEffect(() =>{
+
+	let currentTotal=0;
 	  for(let i=0;i<totalfine.length;i++)
 	  {
-		if(totalfine[i]?.fdata==undefined)
-		{
-			continue;
-		}
 		currentTotal=currentTotal + parseInt(totalfine[i]?.fdata);
 	  }
 	  setTotalFineAmountCalaulated(currentTotal)
-
-    });
-  }, []);
+  },[totalfine])
 //getting list from Issue booik  collection ends here
 
 

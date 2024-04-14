@@ -50,7 +50,7 @@ const Login = () => {
       <div class="container a-container" id="a-container">
         <div class="form" id="a-form" >
           <h2 class="form_title title" >SIGN IN</h2>
-          <input class="form__input" required style={{border:email["errorStyle"]}}  placeholder={email.errorStyle==="" ? 'Enter Email' : 'Please fill the details ⚠️'} type="email" onChange={(e) =>setEmail({email:e.target.value,errorStyle:""}) }/>
+          <input class="form__input" style={{border:email["errorStyle"]}}  placeholder={email.errorStyle==="" ? 'Enter Email' : 'Please fill the details ⚠️'} type="email" onChange={(e) =>setEmail({email:e.target.value,errorStyle:""}) }/>
           <input class="form__input" style={{border:password["errorStyle"]}} placeholder={password.errorStyle==="" ? 'Enter password' : 'Please fill the details ⚠️'} onChange={(e) =>setPassword({password:e.target.value,errorStyle:""}) }/>
           <button class="form__button button" submit onClick={()=>signIn()} >SIGN IN</button>
         </div>
