@@ -23,11 +23,24 @@ const Login = () => {
             setPassword({password:"",errorStyle:"1px solid red"});
           }
           else{
-            signInWithEmailAndPassword(auth , email , password)
-            .then(auth => navigate("/Dashboard"))
-            setEmail("")
-            setPassword("")
-            .catch(error=>alert(error))
+            signInWithEmailAndPassword(auth, email.email, password.password)
+            .then(() => {
+                // If sign-in is successful, navigate to Dashboard
+                navigate("/Dashboard");
+                setEmail("");
+                setPassword("");
+            })
+            .catch(error => {
+                // If there's an error, check if it's due to invalid credentials
+                if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+                    // Handle the error by alerting the user that the credentials are incorrect
+                    alert("User does not exist or invalid credentials. Please sign in.");
+                } else {
+                    // For other errors, display the default error message
+                    alert(error.message);
+                }
+            });
+        
           }
         }
       
